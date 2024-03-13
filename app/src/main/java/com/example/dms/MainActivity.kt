@@ -15,17 +15,17 @@ import com.example.dms.ui.theme.DMSTheme
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
-        setContent {
-            DMSTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    ScreenMain()
-                }
-            }
-        }
+        setContentView(R.layout.activity_main)
+//        setContent {
+//            DMSTheme {
+//                Surface(
+//                    modifier = Modifier.fillMaxSize(),
+//                    color = MaterialTheme.colorScheme.background
+//                ) {
+//                    ScreenMain()
+//                }
+//            }
+//        }
 
     }
 }
