@@ -10,22 +10,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModelProvider
+import com.example.dms.screens.LoginPage
 import com.example.dms.ui.theme.DMSTheme
+import com.example.dms.viewmodel.LoginViewModel
 
 class LoginActivity : ComponentActivity() {
+
+    val loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContent {
-//            DMSTheme {
-//                // A surface container using the 'background' color from the theme
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colorScheme.background
-//                ) {
-//                    Greeting("Android")
-//                }
-//            }
-//        }
+        setContent {
+            DMSTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    LoginPage(loginViewModel)
+                }
+            }
+        }
     }
 }
 
@@ -39,8 +44,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun AppPreview() {
+    val mockViewModel = LoginViewModel()
     DMSTheme {
-        Greeting("Android")
+        LoginPage(mockViewModel)
     }
 }

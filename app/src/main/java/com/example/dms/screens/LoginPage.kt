@@ -34,10 +34,12 @@ import com.example.dms.Routes
 import com.example.dms.components.TextHeaderComponent
 import com.example.dms.ui.theme.DMSTheme
 import com.example.dms.ui.theme.Purple40
+import com.example.dms.viewmodel.LoginViewModel
 
 @Composable
 fun LoginPage(
-    navController: NavController
+//    navController: NavController
+    viewModel : LoginViewModel
 
 ){
     Box(modifier = Modifier.fillMaxSize()){
@@ -46,7 +48,8 @@ fun LoginPage(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(20.dp),
-            onClick = { navController.navigate(Routes.SignUp.route) },
+//            onClick = { navController.navigate(Routes.SignUp.route) },
+            onClick = { },
             style = TextStyle(
                 fontSize = 14.sp,
                 fontFamily = FontFamily.Default,
@@ -99,7 +102,7 @@ fun LoginPage(
 
         Box(modifier = Modifier.padding(40.dp, 0.dp, 40.dp, 0.dp)) {
             Button(
-                onClick = { },
+                onClick = { viewModel.login(username.value.text, password.value.text)},
                 shape = RoundedCornerShape(50.dp),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -113,7 +116,8 @@ fun LoginPage(
         Spacer(modifier = Modifier.height(20.dp))
         ClickableText(
             text = AnnotatedString("Forgot password?"),
-            onClick = { navController.navigate(Routes.ForgotPassword.route)},
+//            onClick = { navController.navigate(Routes.ForgotPassword.route)},
+            onClick = { },
             style = TextStyle(
                 fontSize = 14.sp,
                 fontFamily = FontFamily.Default
@@ -124,8 +128,9 @@ fun LoginPage(
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun AppPreview() {
+    val mockViewModel = LoginViewModel()
     DMSTheme {
-        ScreenMain()
+        LoginPage(mockViewModel)
     }
 }
